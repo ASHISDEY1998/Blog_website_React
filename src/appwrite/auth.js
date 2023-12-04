@@ -21,29 +21,28 @@ export class AuthService {
                 return userAccount;
             }
         } catch (error) {
-            throw error;
+            return false
         }
     }
     async login({ email, password }) {
         try {
             return await this.account.createEmailSession(email, password)
         } catch (error) {
-            throw error;
+            return false
         }
     }
     async getCurrentUser() {
         try {
             return await this.account.get()
         } catch (error) {
-            throw error;
+            return null;
         }
-        return null;
     }
     async logout() {
         try {
             return await this.account.deleteSessions()
         } catch (error) {
-            throw error;
+            return false
         }
     }
 
